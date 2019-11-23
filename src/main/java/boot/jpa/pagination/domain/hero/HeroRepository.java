@@ -13,4 +13,5 @@ public interface HeroRepository extends JpaRepository<Hero, Long> {
             "from Hero h " +
             "order by h.id desc")
     Page<HeroFindAllResponseDto> HeroFindAllResponse(Pageable pageable);
+
 }

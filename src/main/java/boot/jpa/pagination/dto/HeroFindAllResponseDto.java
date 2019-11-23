@@ -13,6 +13,7 @@ public class HeroFindAllResponseDto{
     private String name;
     private int age;
     private String memo;
+    private String createdDate;
     private String modifiedDate;
 
     public HeroFindAllResponseDto(Hero entity) {
@@ -20,6 +21,7 @@ public class HeroFindAllResponseDto{
         name = entity.getName();
         age = entity.getAge();
         memo = entity.getMemo();
+        createdDate = toStringLocalDateTime(entity.getCratedDate());
         modifiedDate = toStringLocalDateTime(entity.getModifiedDate());
     }
 
