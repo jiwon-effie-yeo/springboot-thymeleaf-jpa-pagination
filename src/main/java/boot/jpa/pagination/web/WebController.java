@@ -19,7 +19,15 @@ public class WebController {
     @GetMapping("/")
     public String main(Model model, @PageableDefault Pageable pageable) {
         Page<HeroFindAllResponseDto> pages = heroService.HeroFindAllResponse(pageable);
-        model.addAttribute("list",pages);
+        model.addAttribute("pages",pages);
+
+        //마이너스값이면 1page가 첫 페이지
+        //5페이지부턴 (4-2) 2가 가장 첫번째 값
+        int start = Math.max(1,pages.getNumber() - 2);
+        int last = Math.min(start + 6, pages.getTotalPages());
+
+        model.addAttribute("start", start);
+        model.addAttribute("last", last);
         return "index";
     }
 }
